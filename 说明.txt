@@ -1,5 +1,0 @@
-先运行这个，替换 vllm/根目录下 和  vllm/v1文件夹下的所有文件，基本都是跟熵有关系
-sh /nas/dhl/envs/DHL_verl_fast/replace_vllm_v1.sh
-
-再运行这个， 这边是 更新psa input softmax等相关注入代码：
-sh /nas/dhl/envs/DHL_verl_fast/replace.sh
