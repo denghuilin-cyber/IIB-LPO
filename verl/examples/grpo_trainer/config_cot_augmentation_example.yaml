@@ -1,0 +1,61 @@
+# Example configuration for GRPO with COT augmentation
+# This shows how to configure different COT examples for each rollout
+
+actor_rollout_ref:
+  rollout:
+    # Number of rollouts per prompt (GRPO group size)
+    n: 4
+    
+    # COT Augmentation Configuration
+    cot_augmentation:
+      # Enable COT augmentation
+      enable: true
+      
+      # Option 1: Specify COT examples directly in config
+      examples:
+        - "Let's think step by step. First, identify the problem type..."
+        - "Let's break this down: Step 1: Understand what we're looking for..."
+        - "To solve this, we should: 1) Read the problem carefully 2) Identify key information..."
+        - "Here's my approach: Start by writing down what we know..."
+      
+      # Option 2: Load COT examples from a file (overrides 'examples' if specified)
+      # examples_file: "/path/to/cot_examples.txt"
+      # Supported formats:
+      #   - .txt: one example per line
+      #   - .json: JSON array of strings
+      #   - .jsonl: one JSON object per line (with "example" field)
+      
+      # Option 3: Use a custom function to generate examples dynamically
+      # examples_getter:
+      #   path: "your_module.your_file"
+      #   name: "get_cot_examples_fn"
+      #   # Function signature: def get_cot_examples_fn(batch: DataProto, prompt_idx: int, num_repeats: int) -> List[str]
+      
+      # Sampling strategy for selecting COT examples
+      # Options:
+      #   - "random_with_replacement": Random sampling, examples can repeat (default)
+      #   - "random_without_replacement": Random sampling, no repeats (requires enough examples)
+      #   - "sequential": Use examples in circular order
+      #   - "all_different_per_prompt": Each prompt gets a unique set of examples
+      sampling_strategy: "random_with_replacement"
+      
+      # Whether to add a separator between the original prompt and COT example
+      add_separator: true
+      
+      # The separator string
+      separator: "\n\n"
+      
+      # Random seed for reproducible sampling (optional)
+      seed: 42
+
+# Rest of your GRPO configuration...
+algorithm:
+  adv_estimator: grpo  # Use GRPO advantage estimator
+  # ... other algorithm configs
+
+trainer:
+  # ... trainer configs
+  
+data:
+  # ... data configs
+

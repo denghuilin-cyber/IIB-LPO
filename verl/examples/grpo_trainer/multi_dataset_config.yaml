@@ -1,0 +1,52 @@
+# Multi-dataset configuration for GRPO with COT augmentation
+
+# Dataset configurations
+datasets:
+  - name: gsm8k
+    files:
+      - /nas/dhl/Datasets/my_Datasets/gsm8k/train.parquet
+    prompt_key: question
+    answer_key: answer
+    
+  - name: math
+    files:
+      - /nas/dhl/Datasets/my_Datasets/MATH/train.parquet  # 根据您的实际路径调整
+    prompt_key: problem  # MATH数据集的问题字段名（请根据实际调整）
+    answer_key: solution
+    
+  - name: numina
+    files:
+      - /nas/dhl/Datasets/my_Datasets/NuminaMath-CoT/train.parquet  # 根据您的实际路径调整
+    prompt_key: problem  # 根据实际字段名调整
+    answer_key: solution
+
+# COT file mapping (dataset name -> COT file path)
+cot_files:
+  gsm8k: /nas/dhl/CVAE/Datasets/GSM8K/processed/train_k_shot_GSM8K.jsonl
+  math: /nas/dhl/CVAE/Datasets/MATH/processed/train_k_shot_MATH.jsonl
+  numina: /nas/dhl/CVAE/Datasets/NuminaMath-CoT/processed/train_k_shot_MATH.jsonl
+
+# COT augmentation settings
+cot_augmentation:
+  enable: true
+  match_by: question  # or "id"
+  sampling_strategy: sequential  # sequential, random_with_replacement, random_without_replacement
+  use_full_cot: true
+  add_separator: true
+  separator: "\n\n"
+  
+  # COT format template
+  cot_format_template: |
+    Here's a similar example to help you:
+    
+    Question: {question}
+    
+    Step-by-step solution:
+    {rationale}
+    
+    Final Answer: {final_answer}
+    
+    ---
+    
+    Now, let's solve the current problem step by step:
+
