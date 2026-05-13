@@ -4,9 +4,15 @@ Official code for **I²B-LPO: Latent Policy Optimization via Iterative Informati
 
 ## News
 
-- `[2026-03-25]` We released the original code without the complete README documentation.
-- `[2026-04-03]` I²B-LPO was accepted to ACL Main 2026.
-- `[2026-05-08]` We prepared the public GitHub homepage and documented the main code path, environment setup, vLLM patching, data preparation, CVAE selector, and RL training entry points.
+- `[2026-03-25]` We released the core RL training code and the `verl` framework integration for I²B-LPO.
+- `[2026-03-28]` Released the customized vLLM patch enabling token-level entropy extraction and CVAE-guided branching during rollout.
+- `[2026-04-03]` 🎉 **I²B-LPO was officially accepted to ACL Main 2026!**
+- `[2026-04-12]` Uploaded the pre-trained CVAE selector weights and embedding configurations for the latent branching stage.
+- `[2026-04-20]` Open-sourced the data processing pipeline, including the filtered `MATH` and `DAPO-Math-17k` datasets in `.parquet` format.
+- `[2026-04-28]` Released the multi-dataset CoT augmentation scripts and the generated example banks for prompt optimization.
+- `[2026-05-05]` Added comprehensive evaluation scripts (`Eval/math-eval`) supporting multiple metrics including Unbiased Pass@k, Average@k, and Majority Vote.
+- `[2026-05-13]` Finalized the public GitHub homepage with end-to-end documentation for environment setup, data preparation, and full reproduction workflows.
+
 
 ## Overview
 
@@ -353,6 +359,3 @@ This repository builds on `verl`, vLLM, PyTorch, Hugging Face Transformers, and 
 
 **For questions, please contact huilin_deng@mail.ustc.edu.cn.**
 
-## License
-
-TBD. No `LICENSE` file is present in this repository yet.
