@@ -16,3 +16,18 @@ To calculate the metrics, set the following parameters:
 `n = 1`
 `Ks = [1]`
 Keep these values consistent. This setup is sufficient if you only want to calculate `pass@k`. If you need to calculate other metrics, you will need to adjust these parameters accordingly.
+
+
+
+> *Note on Datasets:* The evaluation datasets will be automatically downloaded during the run. They are saved in the `data/` directory, following a structure like this:
+> ```text
+> Eval/math-eval/data/
+> ├── acm23/
+> │   └── test.jsonl
+> ├── aime2024/
+> │   └── test.jsonl
+> ├── aime2025/
+> │   └── test.jsonl
+> └── math500/
+>     └── test.jsonl
+> ```
