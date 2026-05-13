@@ -345,7 +345,7 @@ The reasoning accuracy and semantic diversity metrics are as follows:
 </div>
 
 <div align="center">
-  <img src="assets/diversity_metrics.png" alt="I²B-LPO diversity Metrics" width="100%">
+  <img src="assets/diversity_metrics.png" alt="I²B-LPO diversity Metrics" width="70%">
 </div>
 
 
