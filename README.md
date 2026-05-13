@@ -31,6 +31,7 @@ IIB-LPO-main/
 ├── build_verl_fast.sh                # Environment setup helper
 ├── replace.sh / replace_vllm_v1.sh   # vLLM replacement scripts
 ├── CVAE_train/                       # CVAE selector training
+├── Eval/                             # Evaluation and scoring scripts
 ├── verl/                             # Core: modified verl project
 │   ├── verl/trainer/main_ppo.py      # RL entry point
 │   ├── verl/trainer/ppo/ray_trainer.py
