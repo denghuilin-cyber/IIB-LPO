@@ -1,19 +1,18 @@
-Step1:
 
+**Step 1:**
+```bash
 sh /nas/dhl/Eval/math-eval/my_eval.sh
+```
+Run this script first to perform the rollout, extract the answers, and save the results as a `.jsonl` file.
 
-先运行这个， rollout问题 并 提取答案， 保存为jsonl文件。
-
-再运行：
-
-Step2:
-
+**Step 2:**
+Then run:
+```bash
 python /nas/dhl/Eval/math-eval/calculate_scores.py
+```
+Inside this script, you need to set the input file path to the `.jsonl` file generated in Step 1.
 
-这个脚本里面的文件，需要设置成 第一步生成的那个文件
-
-计算指标，需要设置 
-
-  n = 1
-
-  Ks = [1]  一致就行，如果只想算 pass@k 如果算别的，需要改一下。
+To calculate the metrics, set the following parameters:
+`n = 1`
+`Ks = [1]`
+Keep these values consistent. This setup is sufficient if you only want to calculate `pass@k`. If you need to calculate other metrics, you will need to adjust these parameters accordingly.
