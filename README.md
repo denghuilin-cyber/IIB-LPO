@@ -1,6 +1,6 @@
 # <img src="assets/iib-lpo-logo.png" alt="I²B-LPO logo" width="64" valign="middle"> I²B-LPO: Latent Policy Optimization via Iterative Information Bottleneck
 
-Official code for **I²B-LPO: Latent Policy Optimization via Iterative Information Bottleneck**, an ACL 2026 paper project.
+Official code for **I²B-LPO: Latent Policy Optimization via Iterative Information Bottleneck**, an RLVR post-training project built on `verl`.
 
 ## News
 
