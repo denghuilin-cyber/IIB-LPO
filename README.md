@@ -1,6 +1,6 @@
 # <img src="assets/iib-lpo-logo.png" alt="I²B-LPO logo" width="64" valign="middle"> I²B-LPO: Latent Policy Optimization via Iterative Information Bottleneck
 
-Official code for **I²B-LPO: Latent Policy Optimization via Iterative Information Bottleneck**, an ACL 2026 paper project built on `verl`.
+Official code for **I²B-LPO: Latent Policy Optimization via Iterative Information Bottleneck**, an ACL 2026 paper project.
 
 ## News
 
@@ -12,6 +12,10 @@ Official code for **I²B-LPO: Latent Policy Optimization via Iterative Informati
 - `[2026-04-28]` Released the multi-dataset CoT augmentation scripts and the generated example banks for prompt optimization.
 - `[2026-05-05]` Added comprehensive evaluation scripts (`Eval/math-eval`) supporting multiple metrics including Unbiased Pass@k, Average@k, and Majority Vote.
 - `[2026-05-13]` Finalized the public GitHub homepage with end-to-end documentation for environment setup, data preparation, and full reproduction workflows.
+
+  
+> 📢 **Note:** Our open-sourced training and evaluation scripts are based on the **[Qwen3-8B-Base](https://huggingface.co/Qwen/Qwen3-8B)** model.
+
 
 
 ## Overview
