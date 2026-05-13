@@ -10,12 +10,22 @@ Official code for **I²B-LPO: Latent Policy Optimization via Iterative Informati
 
 ## Overview
 
-I²B-LPO extends the `verl` RL training stack with patched vLLM rollout, token-level entropy tracing, CVAE-guided branching, and multi-dataset CoT augmentation for math RL training.
+<div align="center">
+  <img src="assets/architecture.png" alt="I²B-LPO Architecture" width="100%">
+</div>
 
-The reproduction workflow has three main stages. The first stage is environment preparation, which includes both the `verl` environment and the patched vLLM runtime required by IIB-LPO.
+**I²B-LPO** is an exploration-enhanced framework for RLVR post-training. It shifts exploration from simple "repeated sampling" to "generating highly discriminative trajectories at critical nodes," improving both accuracy (up to +5.3%) and semantic diversity (+7.4%) on math benchmarks. It consists of two core mechanisms:
+
+1. **Entropy-Driven Latent Branching:** Detects high-entropy "hesitation nodes" during rollout and injects sampled latent variables via Pseudo Self-Attention (PSA) to generate structurally diverse reasoning branches.
+2. **Information Bottleneck (IB) Self-Reward:** Ranks and filters the branches. It retains concise, high-information paths while pruning vacuous verbosity and logical drift before GRPO policy updates.
+
+**Workflow:** `Initial Rollout` → `High-Entropy Branching` → `Candidate Trajectories` → `IB Filtering` → `GRPO Update`
+
+
+I²B-LPO extends the `verl` RL training stack with patched vLLM rollout, token-level entropy tracing, CVAE-guided branching, and multi-dataset CoT augmentation for math RL training. The reproduction workflow has three main stages. 
 
 1. **Environment setup**  
-   Install the Python/CUDA dependencies, prepare the `verl`-based RL training environment, and patch vLLM so rollout can return token-level entropy and support IIB-LPO branching behavior.
+   The environment preparation includes both the `verl` environment and the patched vLLM runtime required by IIB-LPO. Install Python/CUDA dependencies, set up the `verl` RL training stack, and apply the customized vLLM patch to enable token-level entropy extraction and CVAE branching.
 
 2. **CVAE selector preparation**  
    Train or load the CVAE selector used to sample latent reasoning branches.
@@ -312,6 +322,16 @@ checkpoints + logs
 - [`verl/verl/utils/cvae_branching.py`](verl/verl/utils/cvae_branching.py): CVAE selector and z-injection manager.
 - [`verl/forward_context.py`](verl/forward_context.py): patched forward context and `ZInjectionConfig`.
 - [`verl/examples/grpo_trainer/multi_dataset_with_cot.py`](verl/examples/grpo_trainer/multi_dataset_with_cot.py): multi-dataset loader with `dataset_name`, `pure_question`, and reward-compatible `data_source`.
+
+
+## 🔍 Case Study
+
+<div align="center">
+  <img src="assets/case_study.png" alt="I²B-LPO Case Study" width="100%">
+</div>
+
+Information Bottleneck (IB) regularization effectively prunes vacuous verbosity, repetitive loops, and logical drift from the generated reasoning trajectories, as shown in the examples above.
+
 
 ## Citation
 
