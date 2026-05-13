@@ -334,6 +334,21 @@ checkpoints + logs
 - [`verl/examples/grpo_trainer/multi_dataset_with_cot.py`](verl/examples/grpo_trainer/multi_dataset_with_cot.py): multi-dataset loader with `dataset_name`, `pure_question`, and reward-compatible `data_source`.
 
 
+
+
+## 📊 Main Results
+
+The reasoning accuracy and semantic diversity metrics are as follows:
+
+<div align="center">
+  <img src="assets/accuracy_metrics.png" alt="I²B-LPO accuracy Metrics" width="100%">
+</div>
+
+<div align="center">
+  <img src="assets/diversity_metrics.png" alt="I²B-LPO diversity Metrics" width="100%">
+</div>
+
+
 ## 🔍 Case Study
 
 <div align="center">
